@@ -9,7 +9,6 @@ export function* holidaySaga() {
 }
 
 function* workerSaga(action) {
-    console.log(action);
     try {
         yield put({ type: holidayConstants.HOLIDAY_REQUEST });
         const result = yield call(getHolidayApi);

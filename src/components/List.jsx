@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { FlatList, StyleSheet, Text } from 'react-native';
 
 export const List = ({ HolidayData }) => {
@@ -13,13 +15,13 @@ export const List = ({ HolidayData }) => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 22
-    },
     item: {
         padding: 10,
         fontSize: 18,
         height: 44,
     },
 })
+
+List.propTypes = {
+    HolidayData: PropTypes.array
+};

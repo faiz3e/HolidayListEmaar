@@ -15,7 +15,7 @@ const Home = ({ holidayReducer, getHoliday }) => {
     const HolidayData = parseHoliday(holidayReducer)
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>List Of Holidays</Text>
+            <Text style={styles.heading}>{`List Of Holidays`}</Text>
             <List {...{ HolidayData }} />
         </View>
     );
@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     heading: {
+        padding: 10,
         fontSize: 18,
         height: 44,
     }
 });
-
 
 function mapStateToProps(state) {
     const { holidayReducer } = state
