@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { FlatList, StyleSheet, Text } from 'react-native';
 
 export const List = ({ HolidayData }) => {
