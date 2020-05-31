@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
+import { getHoliday } from '../actions/userActions';
 
 import { Provider } from 'react-redux';
 
 class Home extends React.Component {
+    componentDidMount() {
+        this.props.getHoliday();
+    }
     render() {
-        console.log("props",this.props);
+        console.log("props", this.props);
         return (
             <View style={styles.container}>
                 <Text>Its working</Text>
@@ -20,14 +24,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
     },
 });
 
 
 function mapStateToProps(state) {
-    return state;
+    const { holidayReducer } = state
+    return { holidayReducer };
 }
-
-const connectedHome = connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getHoliday: (data) => dispatch(getHoliday(data)),
+    }
+}
+const connectedHome = connect(mapStateToProps, mapDispatchToProps)(Home);
 export { connectedHome as Home };

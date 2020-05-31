@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-// import { holidays } from './holidays';
+import { holidayReducer } from './holidayReducer';
 
-export const rootReducer = combineReducers({  })
+export const rootReducer = combineReducers({ holidayReducer })

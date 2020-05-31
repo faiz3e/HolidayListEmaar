@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
-// import { holidays } from "./holidays";
+import { holidaySaga } from "./holidaySaga";
 
 export function* rootSaga() {
-    yield all([]);
+    yield all([fork(holidaySaga)]);
 }
