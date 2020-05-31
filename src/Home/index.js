@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
+
 import { getHoliday } from '../actions/userActions';
+import { List } from '../components/List';
+import { parseHoliday } from '../helpers';
 
-import { Provider } from 'react-redux';
+const Home = ({ holidayReducer, getHoliday }) => {
 
-class Home extends React.Component {
-    componentDidMount() {
-        this.props.getHoliday();
-    }
-    render() {
-        console.log("props", this.props);
-        return (
-            <View style={styles.container}>
-                <Text>Its working</Text>
-            </View>
-        );
-    }
+    useEffect(() => {
+        getHoliday();
+    }, []);
+
+    const HolidayData = parseHoliday(holidayReducer)
+    return (
+        <View style={styles.container}>
+            <Text style={styles.heading}>List Of Holidays</Text>
+            <List {...{ HolidayData }} />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
     },
+    heading: {
+        fontSize: 18,
+        height: 44,
+    }
 });
 
 
